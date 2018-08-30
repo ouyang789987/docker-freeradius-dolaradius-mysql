@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "sql_mode=ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION">>/etc/mysql/mysql.conf.d/mysqld.cnf
+echo "sql_mode=STRICT_TRANS_TABLES,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION">>/etc/mysql/mysql.conf.d/mysqld.cnf
 
 usermod -d /var/lib/mysql/ mysql && ln -s /var/lib/mysql/mysql.sock /tmp/mysql.sock && chown -R mysql:mysql /var/lib/mysql
 
