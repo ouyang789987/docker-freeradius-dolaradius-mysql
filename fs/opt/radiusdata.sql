@@ -1244,3 +1244,69 @@ end
 delimiter ;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+
+
+
+
+-- ----------------------------
+-- bu chong de biao jie gou
+-- ----------------------------
+
+CREATE TABLE `userinfo` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(128) DEFAULT NULL,
+  `firstname` varchar(200) DEFAULT NULL,
+  `lastname` varchar(200) DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `department` varchar(200) DEFAULT NULL,
+  `company` varchar(200) DEFAULT NULL,
+  `workphone` varchar(200) DEFAULT NULL,
+  `homephone` varchar(200) DEFAULT NULL,
+  `mobilephone` varchar(200) DEFAULT NULL,
+  `address` varchar(200) DEFAULT NULL,
+  `city` varchar(200) DEFAULT NULL,
+  `state` varchar(200) DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
+  `zip` varchar(200) DEFAULT NULL,
+  `notes` varchar(200) DEFAULT NULL,
+  `changeuserinfo` varchar(128) DEFAULT NULL,
+  `portalloginpassword` varchar(128) DEFAULT '',
+  `enableportallogin` int(32) DEFAULT '0',
+  `creationdate` datetime DEFAULT '0000-00-00 00:00:00',
+  `creationby` varchar(128) DEFAULT NULL,
+  `updatedate` datetime DEFAULT '0000-00-00 00:00:00',
+  `updateby` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `username` (`username`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `wimax` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `authdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `spi` varchar(16) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `mipkey` varchar(400) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `lifetime` int(12) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `username` (`username`),
+  KEY `spi` (`spi`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+CREATE TABLE `cui` (
+  `clientipaddress` varchar(15) NOT NULL DEFAULT '',
+  `callingstationid` varchar(50) NOT NULL DEFAULT '',
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `cui` varchar(32) NOT NULL DEFAULT '',
+  `creationdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lastaccounting` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`username`,`clientipaddress`,`callingstationid`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+set session sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
+set global sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
