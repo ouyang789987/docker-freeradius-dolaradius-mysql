@@ -24,6 +24,24 @@ mysql 5.7 会出现错误Expression #1 of SELECT list is not in GROUP BY clause 
 set session sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 set global sql_mode='STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION';
 
+
+
+设置远程访问问题和权限问题，
+授权 给 root  所有sql 权限
+mysql -u root -p oyqgadmin
+mysql> grant all privileges on *.* to root@"%" identified by "oyqgadmin";
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.00 sec)
+修改/etc/mysql/mysql.conf.d/mysqld.cnf 
+找到bind-address,把127.0.0.1改成0.0.0.0 或注释掉此行
+bind-address           = 0.0.0.0
+
+如果mysql启动不了导致docker启动失败，可以进入docker容器后执行
+ /etc/init.d/mysql start 手动启动mysql
+
+
 参考代码
 https://blog.csdn.net/fansili/article/details/78664267
 
