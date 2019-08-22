@@ -2,6 +2,10 @@
 freeradius 需要指明端口类型
 docker run --name freeradius-oyqg -p 8090:80 -p 1812:1812/udp -p 1813:1813/udp -p 3306:3306 oyqg/freeradius
 
+如果出现 MySQL error: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock'的情况，则在重新启动容器，然后进入容器执行下面命令，启动mysql
+service mysql start
+service apache2 start
+
 
 自己构建的docker freeradius
 mysql 5.7 时间字段不能默认为 DEFAULT '0000-00-00 00:00:00'的解决办法
